@@ -8,7 +8,7 @@ export default function RevisionAnalyzer({title, revisions, targetRevId, targetR
     return (
         <>
             {progress < 100 && startAnalysis ? (
-                <div>Прогресс: {Math.round(progress)} %</div>
+                <div>Прогресс: {progress} %</div>
             ) : users ? (
                 <table>
                     <thead>

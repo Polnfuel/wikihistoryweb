@@ -216,7 +216,10 @@ export const useRevisionAnalysis = (title, targetRevision, targetIndex, allRevis
                 rev = allRevisions[i];
                 if (!rev.fullText || rev.fullText.length === 0) continue;
                 articleTextRef.current.MarkNewSections(rev);
-                setProgress(i * 100 / targetIndex);
+                if (i % 10 == 0)
+                    setProgress(Math.round(i * 100 / targetIndex));
+                else if (i == targetIndex)
+                    setProgress(100);
                 rev.fullText = null;
             }
             articleTextRef.current.ready = true;
