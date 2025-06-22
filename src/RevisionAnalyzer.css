@@ -1,3 +1,9 @@
+.cancel-button {
+    margin-left: 10px;
+    padding: 2px;
+    width: 20%;
+}
+
 table {
     border-spacing: 0;
     width: max-content;

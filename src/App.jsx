@@ -71,7 +71,7 @@ function App() {
     };
 
     const handleAnalyzeClick = () => {
-        if (selectedRevId !== null && selectedRevIndex !== null) {
+        if (selectedRevId !== null && selectedRevIndex !== null && !startAnalysis) {
             setStartAnalysis(true);
         }
     };
