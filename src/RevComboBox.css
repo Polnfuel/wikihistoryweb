@@ -1,0 +1,26 @@
+.rev-combo-box {
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.rev-combo-box-mainline {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    padding-left: 3px;
+}
+.rev-combo-box-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding-left: 3px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #242424;
+    z-index: 1000;
+}
+.rev-combo-box-option:hover {
+    background-color: #5f5f5f;
+}

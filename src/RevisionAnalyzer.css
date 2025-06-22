@@ -1,0 +1,20 @@
+table {
+    border-spacing: 0;
+    width: max-content;
+}
+
+table td, th {
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+
+.user-name {
+    width: 50%;
+    padding-left: 4px;
+}
+.user-edits, .user-minor-edits, .user-percentage {
+    text-align: center;
+}
+.user-percentage {
+    width: 15%;
+}
