@@ -169,7 +169,7 @@ class ArticleText {
     }
 }
 
-export const useRevisionAnalysis = (title, targetRevision, targetIndex, allRevisions, startAnalysis) => {
+export const useRevisionAnalysis = (title, targetRevision, targetIndex, allRevisions, startAnalysis, setAnalysis) => {
     const [users, setUsers] = useState(null);
     const [progress, setProgress] = useState(0);
     const usersArrayRef = useRef([]);
@@ -223,6 +223,7 @@ export const useRevisionAnalysis = (title, targetRevision, targetIndex, allRevis
                 rev.fullText = null;
             }
             articleTextRef.current.ready = true;
+            setAnalysis(false);
         };
         analyze();
     }, [targetRevision, startAnalysis, targetIndex, wasmReady]);

@@ -1,9 +1,9 @@
 import { useRevisionAnalysis } from "./useRevisionAnalysis";
 import "./RevisionAnalyzer.css";
 
-export default function RevisionAnalyzer({title, revisions, targetRevId, targetRevIndex, startAnalysis}) {
+export default function RevisionAnalyzer({title, revisions, targetRevId, targetRevIndex, startAnalysis, setAnalysis}) {
     const targetRevision = revisions.find(r => r.id === targetRevId);
-    const {users, progress} = useRevisionAnalysis(title, targetRevision, targetRevIndex, revisions, startAnalysis);
+    const {users, progress} = useRevisionAnalysis(title, targetRevision, targetRevIndex, revisions, startAnalysis, setAnalysis);
 
     return (
         <>
