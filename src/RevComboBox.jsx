@@ -25,21 +25,21 @@ const RevComboBox = ({revisions, setId, setIndex}) => {
                     : 'Выберите версию...'}
             </div>
             {isOpen && (
-              <div className="rev-combo-box-list">
-                {revisions.map((rev, ind) => (
-                  <div className="rev-combo-box-option"
-                    key={rev.id}
-                    onClick={() => {
-                      setSelectedRev(rev);
-                      setId(rev.id);
-                      setIndex(revisions.length - 1 - ind);
-                      setIsOpen(false);
-                    }}
-                  >
-                    {`Version ${rev.id} (${new Date(rev.timestamp).toISOString().replace(/(T|\.000Z)/g, ' ').trimEnd()}; ${rev.user})`}
-                  </div>
-                ))}
-              </div>
+                <div className="rev-combo-box-list">
+                    {revisions.map((rev, ind) => (
+                        <div className="rev-combo-box-option"
+                            key={rev.id}
+                            onClick={() => {
+                                setSelectedRev(rev);
+                                setId(rev.id);
+                                setIndex(revisions.length - 1 - ind);
+                                setIsOpen(false);
+                            }}
+                        >
+                            {`Version ${rev.id} (${new Date(rev.timestamp).toISOString().replace(/(T|\.000Z)/g, ' ').trimEnd()}; ${rev.user})`}
+                        </div>
+                    ))}
+                </div>
             )}
         </div>
     );

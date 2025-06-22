@@ -5,6 +5,7 @@ import lcmodule from "./authors.mjs";
 
 class User {
     name;
+    index;
     anon = false;
     nrOfEdits = 0;
     nrOfMinorEdits = 0;
@@ -236,19 +237,8 @@ export const useRevisionAnalysis = (title, targetRevision, targetIndex, allRevis
                 }
             }
             if (articleTextRef.current.text.length > 0) {
-                u.percentageOfContentAdded = (u.lengthOfContentAdded / totalLength);
+                u.percentageOfContentAdded = Math.round(100 * u.lengthOfContentAdded / totalLength);
             }
-        }
-        let topUsers = [];
-        let maxUser;
-        for (let i = 0; i < 5; i++) {
-            maxUser = null;
-            for (let u of usersArrayRef.current) {
-                if ((!topUsers.includes(u)) && (u.lengthOfContentAdded > 0) && ((maxUser === null) || (u.lengthOfContentAdded > maxUser.lengthOfContentAdded))) {
-                    maxUser = u;
-                }
-            }
-            topUsers.push(maxUser);
         }
         setUsers(usersArrayRef.current);
         console.timeEnd('time');
@@ -260,6 +250,7 @@ export const useRevisionAnalysis = (title, targetRevision, targetIndex, allRevis
 
     const getUsers = () => {
         usersArrayRef.current = [];
+        let ind = 0;
         for (let rev of allRevisions) {
             if (rev.user == null) continue;
             let u1 = usersArrayRef.current.find(u => u.name === rev.user);
@@ -267,6 +258,8 @@ export const useRevisionAnalysis = (title, targetRevision, targetIndex, allRevis
             if (!u1) {
                 u1 = new User();
                 u1.name = rev.user;
+                u1.index = ind;
+                ind++;
 
                 if (rev.anon) {
                     u1.anon = true;

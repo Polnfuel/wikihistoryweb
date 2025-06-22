@@ -72,45 +72,45 @@ function App() {
             <div className='select-name-panel'>
                 <div className="combo-box">
                     <input
-                      ref={inputRef}
-                      type="text"
-                      value={query}
-                      onChange={(e) => {
-                        setQuery(e.target.value); 
-                        setIsFocused(true)
-                      }}
-                      onFocus={() => setIsFocused(true)}
-                      onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-                      placeholder="Искать статью..."
+                        ref={inputRef}
+                        type="text"
+                        value={query}
+                        onChange={(e) => {
+                            setQuery(e.target.value); 
+                            setIsFocused(true)
+                        }}
+                        onFocus={() => setIsFocused(true)}
+                        onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+                        placeholder="Искать статью..."
                     />
 
                     <ul
-                      ref={listRef}
-                      className="suggestions-list"
-                      style={{display: (isFocused) ? 'block' : 'none'}}
+                        ref={listRef}
+                        className="suggestions-list"
+                        style={{display: (isFocused) ? 'block' : 'none'}}
                     >
-                      {suggestions.length > 0 ? (
-                        suggestions.map((item, index) => (
-                          <li
-                            key={index}
-                            onClick={() => handleItemClick(index)}
-                            onMouseEnter={() => setSelectedIndex(index)}
-                            style={{backgroundColor: index === selectedIndex ? '#545454' : 'transparent'}}
-                          >
-                            {item.title}
-                          </li>
-                        ))
-                      ) : query ? (
-                        <li>Не найдено</li>
-                      ) : null}
+                        {suggestions.length > 0 ? (
+                            suggestions.map((item, index) => (
+                                <li
+                                    key={index}
+                                    onClick={() => handleItemClick(index)}
+                                    onMouseEnter={() => setSelectedIndex(index)}
+                                    style={{backgroundColor: index === selectedIndex ? '#545454' : 'transparent'}}
+                                >
+                                    {item.title}
+                                </li>
+                            ))
+                        ) : query ? (
+                            <li>Не найдено</li>
+                        ) : null}
                     </ul>
                 </div>
-                <button onClick={() => loadRevisions(query)} disabled={isLoading}>
+                <button type='button' onClick={() => loadRevisions(query)} disabled={isLoading}>
                     {isLoading ? `Загрузка (${progress})` : 'Загрузить историю'}
                 </button>
             </div>
             <div className='select-revision-panel'>
-                <button className='analysis-button' onClick={handleAnalyzeClick}>Анализировать авторов</button>
+                <button type='button' className='analysis-button' onClick={handleAnalyzeClick}>Анализировать авторов</button>
                 <RevComboBox revisions={[...revisionInfos].reverse()} setId={setSelectedRevId} setIndex={setSelectedRevIndex}></RevComboBox>
             </div>
             <div className='users-table'>
